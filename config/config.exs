@@ -7,20 +7,20 @@
 # General application configuration
 import Config
 
-config :chat_room,
-  ecto_repos: [ChatRoom.Repo],
-  generators: [timestamp_type: :utc_datetime]
+config :elixir_gist,
+  ecto_repos: [ElixirGist.Repo],
+  generators: [timestamp_type: :utc_datetime, binary_id: true]
 
 # Configures the endpoint
-config :chat_room, ChatRoomWeb.Endpoint,
+config :elixir_gist, ElixirGistWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: ChatRoomWeb.ErrorHTML, json: ChatRoomWeb.ErrorJSON],
+    formats: [html: ElixirGistWeb.ErrorHTML, json: ElixirGistWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: ChatRoom.PubSub,
-  live_view: [signing_salt: "jYqPL5TX"]
+  pubsub_server: ElixirGist.PubSub,
+  live_view: [signing_salt: "2bq+lY/Q"]
 
 # Configures the mailer
 #
@@ -29,12 +29,12 @@ config :chat_room, ChatRoomWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :chat_room, ChatRoom.Mailer, adapter: Swoosh.Adapters.Local
+config :elixir_gist, ElixirGist.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  chat_room: [
+  elixir_gist: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -44,7 +44,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.0",
-  chat_room: [
+  elixir_gist: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

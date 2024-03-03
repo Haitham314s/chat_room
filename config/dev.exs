@@ -1,11 +1,14 @@
 import Config
 
 # Configure your database
-config :chat_room, ChatRoom.Repo,
-  database: Path.expand("../chat_room_dev.db", Path.dirname(__ENV__.file)),
-  pool_size: 5,
+config :elixir_gist, ElixirGist.Repo,
+  username: "elixir_gist",
+  password: "elixir_gist",
+  hostname: "localhost",
+  database: "elixir_gist_dev",
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -13,17 +16,17 @@ config :chat_room, ChatRoom.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :chat_room, ChatRoomWeb.Endpoint,
+config :elixir_gist, ElixirGistWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "SHNYlkkIaxXbNLcRnIIti5J7cinOsEwrshZ+t6u0vbyxxTRpuseQw16ffZiX1xU/",
+  secret_key_base: "K45057ktwyg30tRtOFguSgoCnC+u5UxfsHpmZzFm8oY7UaXaeCSYm3G2DtFsfxDB",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:chat_room, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:chat_room, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:elixir_gist, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:elixir_gist, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -50,17 +53,17 @@ config :chat_room, ChatRoomWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :chat_room, ChatRoomWeb.Endpoint,
+config :elixir_gist, ElixirGistWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/chat_room_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/elixir_gist_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :chat_room, dev_routes: true
+config :elixir_gist, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

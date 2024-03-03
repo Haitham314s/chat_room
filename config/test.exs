@@ -1,24 +1,30 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :bcrypt_elixir, :log_rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :chat_room, ChatRoom.Repo,
-  database: Path.expand("../chat_room_test.db", Path.dirname(__ENV__.file)),
-  pool_size: 5,
-  pool: Ecto.Adapters.SQL.Sandbox
+config :elixir_gist, ElixirGist.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "elixir_gist_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: System.schedulers_online() * 2
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :chat_room, ChatRoomWeb.Endpoint,
+config :elixir_gist, ElixirGistWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "ciERxv/PZvqk1n0oTcukFGjVucjb70L8y0RxL0OK3wWV2fYcCd804lxRiB8NlMLn",
+  secret_key_base: "M3ffh+9GSi7fbWjIt93OxBmvzmZHwSj8zKFNXPaOAhxztIil12QfITPlqQBrU9ZC",
   server: false
 
 # In test we don't send emails.
-config :chat_room, ChatRoom.Mailer, adapter: Swoosh.Adapters.Test
+config :elixir_gist, ElixirGist.Mailer, adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

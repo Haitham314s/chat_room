@@ -1,4 +1,4 @@
-# ChatRoom
+# ElixirGist
 
 To start your Phoenix server:
 

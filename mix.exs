@@ -1,9 +1,9 @@
-defmodule ChatRoom.MixProject do
+defmodule ElixirGist.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :chat_room,
+      app: :elixir_gist,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule ChatRoom.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {ChatRoom.Application, []},
+      mod: {ElixirGist.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -32,10 +32,11 @@ defmodule ChatRoom.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.7.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.10"},
-      {:ecto_sqlite3, ">= 0.0.0"},
+      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.20.2"},
@@ -74,10 +75,10 @@ defmodule ChatRoom.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind chat_room", "esbuild chat_room"],
+      "assets.build": ["tailwind elixir_gist", "esbuild elixir_gist"],
       "assets.deploy": [
-        "tailwind chat_room --minify",
-        "esbuild chat_room --minify",
+        "tailwind elixir_gist --minify",
+        "esbuild elixir_gist --minify",
         "phx.digest"
       ]
     ]
