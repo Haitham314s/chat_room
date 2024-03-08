@@ -54,12 +54,27 @@ form input[type="text"]:focus {
   @apply focus:outline-none focus:border-emLavender-light focus:ring-0;
 }
 
-form textarea#gist_markup_text {
-  @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white h-[300px] resize-none w-full rounded-b-md rounded-t-none mt-0;
+form textarea#gist-textarea {
+  @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white h-[300px] resize-none w-full rounded-b-none rounded-t-none mt-0;
+  border-top: none;
+  border-left: none;
+}
+
+form textarea#gist-textarea:focus {
+  @apply focus:outline-none focus:border-white focus:ring-0;
+}
+
+textarea.line-numbers + div[phx-feedback-for="gist[markup_text]"] {
+  @apply w-full;
+}
+
+.line-numbers {
+  @apply border border-white font-brand font-regular text-xs text-emDark-light bg-emDark-dark h-[300px] w-[54px] text-right overflow-hidden resize-none rounded-b-none;
+  border-right: none;
   border-top: none;
 }
 
-form textarea#gist_markup_text:focus {
+.line-numbers:focus {
   @apply focus:outline-none focus:border-white focus:ring-0;
 }
 
