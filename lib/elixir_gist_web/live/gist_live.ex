@@ -8,6 +8,9 @@ defmodule ElixirGistWeb.GistLive do
     current_user = Accounts.get_user_by_session_token(user_token)
     gist = Gists.get_gist!(id)
 
+    {:ok, relative_time} = Timex.format(gist.updated_at, "{relative}", :relative)
+    gist = Map.put(gist, :relative_time, relative_time)
+
     socket = assign(socket, current_user: current_user, gist: gist)
 
     {:ok, socket}
