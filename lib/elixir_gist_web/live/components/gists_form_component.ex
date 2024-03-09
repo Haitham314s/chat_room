@@ -25,6 +25,14 @@ defmodule ElixirGistWeb.GistsFormComponent do
   end
 
   def handle_event("create", %{"gist" => params}, socket) do
+    if is_nil(params["id"]) do
+      create_gist(params, socket)
+    else
+      update_gist(params, socket)
+    end
+  end
+
+  defp create_gist(params, socket) do
     case Gists.create_gist(socket.assigns.current_user, params) do
       {:ok, gist} ->
         socket = push_event(socket, "clear-textareas", %{})
@@ -35,6 +43,18 @@ defmodule ElixirGistWeb.GistsFormComponent do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, :form, to_form(changeset))}
+    end
+  end
+
+  defp update_gist(params, socket) do
+    case Gists.update_gist(socket.assigns.current_user, params) do
+      {:ok, gist} ->
+        socket = push_patch(socket, to: ~p"/gists?#{[id: gist]}")
+        {:noreply, socket}
+
+      {:error, message} ->
+        socket = put_flash(socket, :error, message)
+        {:noreply, socket}
     end
   end
 end

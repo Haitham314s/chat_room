@@ -374,15 +374,13 @@ const Highlight = {
       case "xht":
       case "xhtml":
       case "mustache":
-      case "jinja":
-        return "html+django";
-      case "eex":
-        return "html+eex";
-      case "erb":
       case "erb.deface":
-        return "html+erb";
+      case "jinja":
+      case "erb":
+      case "eex":
+      case "heex":
       case "phtml":
-        return "html+php";
+        return "html";
       case "hh":
       case "php":
         return "hack";

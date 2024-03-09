@@ -18,7 +18,8 @@ defmodule ElixirGistWeb.GistLive do
     {:ok, relative_time} = Timex.format(gist.updated_at, "{relative}", :relative)
     gist = Map.put(gist, :relative_time, relative_time)
 
-    socket = assign(socket, current_user: current_user, gist: gist, form: gist_form)
+    socket =
+      assign(socket, current_user: current_user, gist: gist, form: gist_form, edit_mode: false)
 
     {:ok, socket}
   end
@@ -37,5 +38,10 @@ defmodule ElixirGistWeb.GistLive do
         socket = put_flash(socket, :error, message)
         {:noreply, socket}
     end
+  end
+
+  def handle_event("edit", _params, socket) do
+    socket = assign(socket, edit_mode: !socket.assigns.edit_mode)
+    {:noreply, socket}
   end
 end

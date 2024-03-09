@@ -40,7 +40,13 @@
       </div>
 
       <div class="flex justify-end">
-        <.button class="create_button" phx-disable-with="Creating...">Create Gist</.button>
+        <.button class="create_button" phx-disable-with="Creating...">
+          <%= if @id == :new do %>
+            Create Gist
+          <% else %>
+            Update Gist
+          <% end %>
+        </.button>
       </div>
     </div>
   </.form>
