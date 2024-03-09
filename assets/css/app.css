@@ -85,12 +85,12 @@ textarea.line-numbers + div[phx-feedback-for="gist[markup_text]"] {
 }
 
 .syntax-numbers {
-  @apply border border-white font-brand py-[20px] text-xs text-emDark-light bg-emSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
+  @apply border border-white font-brand py-3 text-xs text-emDark-light bg-emSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
   border-right: none;
   border-top: none;
 }
 
-.syntax-numbers {
+.syntax-numbers:focus {
   @apply focus:outline-none focus:border-white focus:ring-0;
 }
 

@@ -1,11 +1,22 @@
 type LineNumberTextType = HTMLTextAreaElement | null;
 
+export function updateLineNumbers(value: HTMLTextAreaElement["value"]) {
+  const lineNumberText: LineNumberTextType =
+    document.querySelector("#line-numbers");
+  if (!lineNumberText) return;
+
+  const lines = value.split("\n");
+  const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
+
+  lineNumberText.value = numbers;
+}
+
 const UpdateLineNumbers = {
   mounted() {
     const lineNumberText: LineNumberTextType =
       document.querySelector("#line-numbers");
     this.el.addEventListener("input", () => {
-      this.updateLineNumbers();
+      updateLineNumbers(this.el.value);
     });
 
     this.el.addEventListener("scroll", () => {
@@ -31,18 +42,7 @@ const UpdateLineNumbers = {
       if (lineNumberText !== null) lineNumberText.value = "1\n";
     });
 
-    this.updateLineNumbers();
-  },
-
-  updateLineNumbers() {
-    const lineNumberText: LineNumberTextType =
-      document.querySelector("#line-numbers");
-    if (!lineNumberText) return;
-
-    const lines = this.el.value.split("\n");
-    const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
-
-    if (lineNumberText !== null) lineNumberText.value = numbers;
+    updateLineNumbers(this.el.value);
   },
 };
 
