@@ -32,6 +32,8 @@ const Highlight = {
         return "html";
       case "js":
         return "javascript";
+      case "ts":
+        return "typescript";
       default:
         return "elixir";
     }

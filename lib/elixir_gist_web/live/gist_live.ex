@@ -12,4 +12,20 @@ defmodule ElixirGistWeb.GistLive do
 
     {:ok, socket}
   end
+
+  def handle_event("delete", %{"id" => id}, socket) do
+    case Gists.delete_gist(socket.assigns.current_user, id) do
+      {:ok, _gist} ->
+        socket =
+          socket
+          |> put_flash(:info, "Gist successfully deleted")
+          |> push_navigate(to: ~p"/create")
+
+        {:noreply, socket}
+
+      {:error, message} ->
+        socket = put_flash(socket, :error, message)
+        {:noreply, socket}
+    end
+  end
 end
