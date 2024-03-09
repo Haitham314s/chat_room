@@ -4,14 +4,21 @@ defmodule ElixirGistWeb.GistLive do
   alias ElixirGist.Gists
   alias ElixirGist.Accounts
 
+  alias ElixirGistWeb.GistsFormComponent
+
   def mount(%{"id" => id}, %{"user_token" => user_token}, socket) do
     current_user = Accounts.get_user_by_session_token(user_token)
     gist = Gists.get_gist!(id)
 
+    gist_form =
+      gist
+      |> Gists.change_gist()
+      |> to_form()
+
     {:ok, relative_time} = Timex.format(gist.updated_at, "{relative}", :relative)
     gist = Map.put(gist, :relative_time, relative_time)
 
-    socket = assign(socket, current_user: current_user, gist: gist)
+    socket = assign(socket, current_user: current_user, gist: gist, form: gist_form)
 
     {:ok, socket}
   end

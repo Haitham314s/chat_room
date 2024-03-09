@@ -1,3 +1,5 @@
+import { ViewHook } from "phoenix_live_view";
+
 type LineNumberTextType = HTMLTextAreaElement | null;
 
 export function updateLineNumbers(value: HTMLTextAreaElement["value"]) {
@@ -12,11 +14,11 @@ export function updateLineNumbers(value: HTMLTextAreaElement["value"]) {
 }
 
 const UpdateLineNumbers = {
-  mounted() {
+  mounted(this: ViewHook) {
     const lineNumberText: LineNumberTextType =
       document.querySelector("#line-numbers");
     this.el.addEventListener("input", () => {
-      updateLineNumbers(this.el.value);
+      updateLineNumbers((<HTMLTextAreaElement>this.el).value);
     });
 
     this.el.addEventListener("scroll", () => {
@@ -26,23 +28,25 @@ const UpdateLineNumbers = {
     this.el.addEventListener("keydown", (e) => {
       if (e.key === "Tab") {
         e.preventDefault();
-        var start = this.el.selectionStart;
-        var end = this.el.selectionEnd;
-        this.el.value =
-          this.el.value.substring(0, start) +
+        var start = (<HTMLTextAreaElement>this.el).selectionStart;
+        var end = (<HTMLTextAreaElement>this.el).selectionEnd;
+        (<HTMLTextAreaElement>this.el).value =
+          (<HTMLTextAreaElement>this.el).value.substring(0, start) +
           "\t" +
-          this.el.value.substring(end);
+          (<HTMLTextAreaElement>this.el).value.substring(end);
 
-        this.el.selectionStart = this.el.selectionEnd = start + 1;
+        (<HTMLTextAreaElement>this.el).selectionStart = (<HTMLTextAreaElement>(
+          this.el
+        )).selectionEnd = start + 1;
       }
     });
 
     this.handleEvent("clear-textareas", () => {
-      this.el.value = "";
+      (<HTMLTextAreaElement>this.el).value = "";
       if (lineNumberText !== null) lineNumberText.value = "1\n";
     });
 
-    updateLineNumbers(this.el.value);
+    updateLineNumbers((<HTMLTextAreaElement>this.el).value);
   },
 };
 
