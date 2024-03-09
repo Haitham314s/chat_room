@@ -1,14 +1,15 @@
-let Hooks = {};
+type LineNumberTextType = HTMLTextAreaElement | null;
 
-Hooks.UpdateLineNumbers = {
+const UpdateLineNumbers = {
   mounted() {
-    const lineNumberText = document.querySelector("#line-numbers");
+    const lineNumberText: LineNumberTextType =
+      document.querySelector("#line-numbers");
     this.el.addEventListener("input", () => {
       this.updateLineNumbers();
     });
 
     this.el.addEventListener("scroll", () => {
-      lineNumberText.scrollTop = this.el.scrollTop;
+      if (lineNumberText !== null) lineNumberText.scrollTop = this.el.scrollTop;
     });
 
     this.el.addEventListener("keydown", (e) => {
@@ -27,21 +28,22 @@ Hooks.UpdateLineNumbers = {
 
     this.handleEvent("clear-textareas", () => {
       this.el.value = "";
-      lineNumberText.value = "1\n";
+      if (lineNumberText !== null) lineNumberText.value = "1\n";
     });
 
     this.updateLineNumbers();
   },
 
   updateLineNumbers() {
-    const lineNumberText = document.querySelector("#line-numbers");
+    const lineNumberText: LineNumberTextType =
+      document.querySelector("#line-numbers");
     if (!lineNumberText) return;
 
     const lines = this.el.value.split("\n");
     const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
 
-    lineNumberText.value = numbers;
+    if (lineNumberText !== null) lineNumberText.value = numbers;
   },
 };
 
-export default Hooks;
+export default UpdateLineNumbers;
