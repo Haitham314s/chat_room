@@ -1,29 +1,46 @@
-<div class="mx-auto max-w-sm">
-  <.header class="text-center">
+<.header class="em-gradient flex flex-col items-center justify-center text-center">
+  <h1 class="font-brand font-bold text-3xl text-white py-2">
     Sign in to account
-    <:subtitle>
+  </h1>
+
+  <:subtitle>
+    <h3 class="font-brand font-bold text-l text-white">
       Don't have an account?
-      <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
+      <.link
+        navigate={~p"/users/register"}
+        class="font-semibold text-brand hover:underline text-emLavender-dark"
+      >
         Sign up
       </.link>
       for an account now.
-    </:subtitle>
-  </.header>
+    </h3>
+  </:subtitle>
+</.header>
 
-  <.simple_form :let={f} for={@conn.params["user"]} as={:user} action={~p"/users/log_in"}>
+<div class="mx-auto max-w-md">
+  <.simple_form
+    :let={f}
+    id="user-form"
+    for={@conn.params["user"]}
+    as={:user}
+    action={~p"/users/log_in"}
+  >
     <.error :if={@error_message}><%= @error_message %></.error>
 
-    <.input field={f[:email]} type="email" label="Email" required />
-    <.input field={f[:password]} type="password" label="Password" required />
+    <.input field={f[:email]} type="email" placeholder="Email" required />
+    <.input field={f[:password]} type="password" placeholder="Password" required />
 
     <:actions :let={f}>
       <.input field={f[:remember_me]} type="checkbox" label="Keep me logged in" />
-      <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
+      <.link
+        href={~p"/users/reset_password"}
+        class="text-m text_brand text-emDark-light font-semibold hover:underline"
+      >
         Forgot your password?
       </.link>
     </:actions>
     <:actions>
-      <.button phx-disable-with="Signing in..." class="w-full">
+      <.button phx-disable-with="Signing in..." class="create_button w-full">
         Sign in <span aria-hidden="true">→</span>
       </.button>
     </:actions>

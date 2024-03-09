@@ -46,12 +46,40 @@
   @apply text-emDark-light;
 }
 
-form input[type="text"] {
+#user-form div,
+#update_email div,
+#update_password div {
+  @apply bg-transparent;
+}
+
+#user-form div[phx-feedback-for],
+#update_email div[phx-feedback-for],
+#update_password div[phx-feedback-for] {
+  @apply mt-0;
+}
+
+#user-form > div > div.mt-2,
+#update_email > div > div.mt-2,
+#update_password > div > div.mt-2 {
+  @apply mt-5;
+}
+
+#user-form form input[type="text"],
+#update_email form input[type="text"],
+#update_password form input[type="text"] {
   @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white;
 }
 
-form input[type="text"]:focus {
-  @apply focus:outline-none focus:border-emLavender-light focus:ring-0;
+form input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white;
+}
+
+form input[type="text"],
+input[type="email"],
+input[type="password"]:focus {
+  @apply focus:outline-none focus:border-emLavender focus:ring-0;
 }
 
 form textarea#gist-textarea {
