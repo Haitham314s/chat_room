@@ -6,6 +6,11 @@ Hooks.UpdateLineNumbers = {
       this.updateLineNumbers();
     });
 
+    this.el.addEventListener("scroll", () => {
+      const lineNumberText = document.querySelector("#line-numbers");
+      lineNumberText.scrollTop = this.el.scrollTop;
+    });
+
     this.updateLineNumbers();
   },
 
