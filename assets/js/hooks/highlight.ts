@@ -374,19 +374,16 @@ const Highlight = {
       case "st":
       case "xht":
       case "xhtml":
-        return "html";
       case "mustache":
       case "jinja":
-        return "html+django";
       case "eex":
-        return "html+eex";
       case "erb":
       case "erb.deface":
-        return "html+erb";
       case "phtml":
-        return "html+php";
+      case "heex":
+        return "html";
       case "php":
-        return "hack";
+        return "php";
       case "haml.deface":
         return "haml";
       case "hbs":
@@ -492,7 +489,6 @@ const Highlight = {
         return "lasso";
       case "hlean":
         return "lean";
-        return "lex";
       case "ly":
       case "ily":
         return "lilypond";
@@ -528,7 +524,6 @@ const Highlight = {
         return "m4sugar";
       case "mcr":
         return "maxscript";
-        return "muf";
       case "mak":
       case "mk":
       case "mkfile":
@@ -549,7 +544,6 @@ const Highlight = {
       case "wl":
       case "wlt":
         return "mathematica";
-        return "matlab";
       case "maxpat":
       case "maxhelp":
       case "maxproj":
@@ -601,12 +595,10 @@ const Highlight = {
       case "mll":
       case "mly":
         return "ocaml";
-        return "objective-c";
       case "mm":
         return "objective-c++";
       case "sj":
         return "objective-j";
-        return "opencl";
       case "p":
         return "openedge-abl";
       case "scad":
@@ -816,7 +808,6 @@ const Highlight = {
         return "shellsession";
       case "sl":
         return "slash";
-        return "smalltalk";
       case "tpl":
         return "smarty";
       case "sp":
