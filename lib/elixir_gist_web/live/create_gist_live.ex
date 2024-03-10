@@ -2,7 +2,6 @@ defmodule ElixirGistWeb.CreateGistLive do
   use ElixirGistWeb, :live_view
 
   alias ElixirGist.Accounts
-  alias ElixirGist.{Gists, Gists.Gist}
   alias ElixirGistWeb.GistsFormComponent
 
   def mount(_params, %{"user_token" => user_token}, socket) do
