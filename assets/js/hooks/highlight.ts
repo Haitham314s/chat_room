@@ -59,7 +59,6 @@ const Highlight = {
       case "ino":
         return "arduino";
       case "adoc":
-      case "asc":
       case "aj":
         return "aspectj";
       case "asm":
@@ -83,7 +82,6 @@ const Highlight = {
         return "batchfile";
       case "bb":
         return "bitbake";
-      case "bb":
       case "decls":
         return "blitzbasic";
       case "bmx":
@@ -108,12 +106,10 @@ const Highlight = {
       case "cc":
       case "cp":
       case "cxx":
-      case "h":
       case "h++":
       case "hh":
       case "hpp":
       case "hxx":
-      case "inc":
       case "inl":
       case "ipp":
       case "tcc":
@@ -154,7 +150,6 @@ const Highlight = {
         return "clojure";
       case "coffee":
       case "_coffee":
-      case "cake":
       case "cjsx":
       case "cson":
       case "iced":
@@ -173,11 +168,8 @@ const Highlight = {
       case "podsl":
       case "sexp":
         return "common-lisp";
-      case "cp":
       case "cps":
         return "component-pascal";
-      case "cl":
-        return "cool";
       case "v":
       case "cppobjdump":
       case "c++-objdump":
@@ -240,7 +232,6 @@ const Highlight = {
       case "xrl":
       case "yrl":
         return "erlang";
-      case "fs":
       case "fsi":
       case "fsx":
         return "f#";
@@ -261,16 +252,11 @@ const Highlight = {
         return "fantom";
       case "fs":
         return "filterscript";
-      case "for":
       case "eam.fs":
         return "formatted";
       case "fth":
       case "4th":
-      case "f":
-      case "for":
-      case "fr":
       case "frt":
-      case "fs":
       case "ftl":
         return "freemarker";
       case "fr":
@@ -281,19 +267,15 @@ const Highlight = {
         return "g-code";
       case "gms":
         return "gams";
-      case "g":
       case "gd":
       case "gi":
       case "tst":
       case "s":
       case "ms":
         return "gas";
-      case "gd":
-        return "gdscript";
       case "fp":
       case "frag":
       case "frg":
-      case "fs":
       case "fsh":
       case "fshader":
       case "geo":
@@ -351,9 +333,7 @@ const Highlight = {
       case "7":
       case "8":
       case "9":
-      case "l":
       case "me":
-      case "ms":
       case "n":
       case "rno":
       case "roff":
@@ -364,12 +344,10 @@ const Highlight = {
       case "gsp":
         return "groovy-server-pages";
       case "tf":
-      case "fx":
       case "fxh":
       case "hlsli":
       case "htm":
       case "html.hl":
-      case "inc":
       case "st":
       case "xht":
       case "xhtml":
@@ -381,9 +359,8 @@ const Highlight = {
       case "heex":
       case "phtml":
         return "html";
-      case "hh":
       case "php":
-        return "hack";
+        return "php";
       case "haml.deface":
       case "hbs":
       case "hb":
@@ -394,8 +371,6 @@ const Highlight = {
       case "hx":
       case "hxsl":
         return "haxe";
-      case "bf":
-        return "hyphy";
       case "pro":
       case "dlm":
         return "idl";
@@ -403,7 +378,6 @@ const Highlight = {
         return "igor-pro";
       case "cfg":
       case "prefs":
-      case "pro":
       case "properties":
       case "irclog":
       case "weechatlog":
@@ -435,10 +409,7 @@ const Highlight = {
       case "js":
       case "_js":
       case "bones":
-      case "es":
       case "es6":
-      case "frag":
-      case "gs":
       case "jake":
       case "jsb":
       case "jscad":
@@ -469,8 +440,6 @@ const Highlight = {
         return "julia";
       case "ipynb":
         return "jupyter-notebook";
-      case "sch":
-      case "brd":
       case "kicad_pcb":
         return "kicad";
       case "kt":
@@ -489,18 +458,12 @@ const Highlight = {
       case "lasso9":
       case "ldml":
       case "hlean":
-      case "l":
       case "ly":
       case "ily":
         return "lilypond";
-      case "b":
-      case "m":
-        return "limbo";
       case "ld":
       case "lds":
         return "linker-script";
-      case "mod":
-        return "linux-kernel-module";
       case "lagda":
         return "literate-agda";
       case "litcoffee":
@@ -515,7 +478,6 @@ const Highlight = {
       case "xi":
         return "logos";
       case "lgt":
-      case "ls":
         return "loomscript";
       case "fcgi":
       case "nse":
@@ -525,12 +487,9 @@ const Highlight = {
       case "mumps":
       case "m4":
         return "m4sugar";
-      case "ms":
       case "mcr":
         return "maxscript";
-      case "m":
       case "mak":
-      case "d":
       case "mk":
       case "mkfile":
         return "makefile";
@@ -541,14 +500,12 @@ const Highlight = {
       case "mkdown":
       case "ron":
       case "cdf":
-      case "m":
       case "ma":
       case "mt":
       case "nb":
       case "nbp":
       case "wl":
       case "wlt":
-      case "m":
       case "maxpat":
       case "maxhelp":
       case "maxproj":
@@ -556,7 +513,6 @@ const Highlight = {
       case "pat":
         return "max";
       case "wiki":
-      case "m":
       case "moo":
         return "mercury";
       case "druby":
@@ -564,13 +520,9 @@ const Highlight = {
       case "mir":
       case "mo":
         return "modelica";
-      case "mod":
-        return "modula-2";
       case "mms":
       case "mmk":
         return "module-management-system";
-      case "moo":
-        return "moocode";
       case "moon":
         return "moonscript";
       case "myt":
@@ -578,8 +530,6 @@ const Highlight = {
       case "nsi":
       case "nsh":
         return "nsis";
-      case "n":
-        return "nemerle";
       case "axs":
       case "axi":
         return "netlinx";
@@ -589,11 +539,8 @@ const Highlight = {
       case "nlogo":
         return "netlogo";
       case "nl":
-      case "lisp":
-      case "lsp":
         return "newlisp";
       case "nginxconf":
-      case "vhost":
         return "nginx";
       case "nim":
       case "numpyw":
@@ -607,28 +554,21 @@ const Highlight = {
       case "mly":
         return "ocaml";
       case "m":
-      case "h":
         return "objective-c";
       case "mm":
         return "objective-c++";
-      case "j":
       case "sj":
         return "objective-j";
-      case "cl":
       case "p":
-      case "cls":
         return "openedge-abl";
       case "scad":
         return "openscad";
       case "oxh":
       case "oxo":
       case "pwn":
-      case "inc":
         return "pawn";
       case "aw":
       case "ctp":
-      case "fcgi":
-      case "inc":
       case "php3":
       case "php4":
       case "php5":
@@ -640,10 +580,8 @@ const Highlight = {
       case "pks":
       case "plb":
       case "sql":
-      case "sql":
         return "plpgsql";
       case "pov":
-      case "inc":
         return "pov-ray-sdl";
       case "psc":
         return "papyrus";
@@ -654,14 +592,12 @@ const Highlight = {
       case "pas":
       case "dfm":
       case "dpr":
-      case "inc":
       case "lpr":
       case "pp":
         return "pascal";
       case "pl":
       case "al":
       case "cgi":
-      case "fcgi":
       case "ph":
       case "plx":
       case "pm":
@@ -674,16 +610,11 @@ const Highlight = {
       case "p6":
       case "p6l":
       case "p6m":
-      case "pl":
       case "pl6":
-      case "pm":
       case "pm6":
-      case "t":
         return "perl6";
       case "pkl":
         return "pickle";
-      case "l":
-        return "picolisp";
       case "pig":
         return "piglatin";
       case "pmod":
@@ -698,18 +629,13 @@ const Highlight = {
         return "powershell";
       case "pde":
         return "processing";
-      case "pl":
-      case "pro":
       case "yap":
       case "spin":
         return "propeller-spin";
       case "proto":
         return "protocol-buffer";
-      case "asc":
       case "pub":
         return "public-key";
-      case "pp":
-        return "puppet";
       case "pd":
         return "pure-data";
       case "pb":
@@ -719,8 +645,6 @@ const Highlight = {
         return "purescript";
       case "py":
       case "bzl":
-      case "cgi":
-      case "fcgi":
       case "gyp":
       case "lmi":
       case "pyde":
@@ -735,7 +659,6 @@ const Highlight = {
       case "pytb":
         return "python-traceback";
       case "qbs":
-      case "pro":
       case "pri":
         return "qmake";
       case "rd":
@@ -765,9 +688,6 @@ const Highlight = {
       case "reds":
       case "cw":
         return "redcode";
-      case "rpy":
-        return "ren'py";
-      case "rs":
       case "rsh":
         return "renderscript";
       case "robot":
@@ -776,7 +696,6 @@ const Highlight = {
         return "rouge";
       case "rb":
       case "builder":
-      case "fcgi":
       case "gemspec":
       case "god":
       case "irbrc":
@@ -800,12 +719,10 @@ const Highlight = {
       case "hqf":
       case "cql":
       case "ddl":
-      case "inc":
       case "prc":
       case "tab":
       case "udf":
       case "viw":
-      case "sql":
       case "db2":
         return "sqlpl";
       case "sagews":
@@ -815,20 +732,16 @@ const Highlight = {
       case "sc":
       case "scm":
       case "sld":
-      case "sls":
       case "sps":
       case "ss":
         return "scheme";
       case "sci":
       case "sce":
-      case "tst":
         return "scilab";
       case "sh":
       case "bash":
       case "bats":
-      case "cgi":
       case "command":
-      case "fcgi":
       case "ksh":
       case "sh.in":
       case "tmux":
@@ -839,13 +752,9 @@ const Highlight = {
         return "shellsession";
       case "sl":
         return "slash";
-      case "st":
-      case "cs":
-        return "smalltalk";
       case "tpl":
         return "smarty";
       case "sp":
-      case "inc":
       case "sma":
         return "sourcepawn";
       case "nut":
@@ -865,7 +774,6 @@ const Highlight = {
         return "stata";
       case "styl":
         return "stylus";
-      case "sc":
       case "scd":
         return "supercollider";
       case "sv":
@@ -879,7 +787,6 @@ const Highlight = {
       case "bbx":
       case "bib":
       case "cbx":
-      case "cls":
       case "dtx":
       case "ins":
       case "lbx":
@@ -889,15 +796,11 @@ const Highlight = {
       case "mkvi":
       case "sty":
       case "toc":
-      case "t":
         return "terra";
       case "txt":
-      case "fr":
-      case "nb":
       case "ncl":
       case "no":
         return "text";
-      case "t":
       case "tu":
         return "turing";
       case "ttl":
@@ -927,14 +830,12 @@ const Highlight = {
       case "vht":
       case "vhw":
       case "vapi":
-      case "v":
       case "veo":
         return "verilog";
       case "vim":
         return "viml";
       case "vb":
       case "bas":
-      case "cls":
       case "frm":
       case "frx":
       case "vba":
@@ -969,15 +870,12 @@ const Highlight = {
       case "kml":
       case "launch":
       case "mdpolicy":
-      case "mm":
-      case "mod":
       case "mxml":
       case "nproj":
       case "nuspec":
       case "odd":
       case "osm":
       case "plist":
-      case "pluginspec":
       case "props":
       case "ps1xml":
       case "psc1":
@@ -996,8 +894,6 @@ const Highlight = {
       case "tmPreferences":
       case "tmSnippet":
       case "tmTheme":
-      case "ts":
-      case "tsx":
       case "ui":
       case "urdf":
       case "ux":
@@ -1062,7 +958,6 @@ const Highlight = {
       case "rst.txt":
         return "restructuredtext";
       case "prg":
-      case "ch":
       case "prw":
         return "xbase";
       default:
