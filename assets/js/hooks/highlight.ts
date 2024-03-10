@@ -800,6 +800,7 @@ const Highlight = {
       case "txt":
       case "ncl":
       case "no":
+      case "md":
         return "text";
       case "tu":
         return "turing";
