@@ -9,6 +9,8 @@ defmodule ElixirGist.Gists do
   alias ElixirGist.Accounts.User
   alias ElixirGist.Gists.Gist
 
+  @default_limit 100
+
   @doc """
   Returns the list of gists.
 
@@ -19,7 +21,48 @@ defmodule ElixirGist.Gists do
 
   """
   def list_gists do
-    Repo.all(Gist)
+    query =
+      from g in Gist,
+        order_by: :updated_at,
+        limit: @default_limit,
+        preload: [:user]
+
+    Repo.all(query)
+  end
+
+  def list_gists(page, limit \\ @default_limit) do
+    offset = page * limit
+
+    query =
+      from g in Gist,
+        order_by: :updated_at,
+        limit: ^limit,
+        offset: ^offset,
+        preload: [:user]
+
+    Repo.all(query)
+  end
+
+  def list_gists(page, limit, user_id) do
+    offset = page * limit
+
+    query =
+      from g in Gist,
+        order_by: :updated_at,
+        where: g.user_id == ^user_id,
+        limit: ^limit,
+        offset: ^offset,
+        preload: [:user]
+
+    Repo.all(query)
+  end
+
+  def list_gists_count do
+    Repo.one(from g in Gist, select: count("*"))
+  end
+
+  def list_gists_count(user_id) do
+    Repo.one(from g in Gist, select: count("*"), where: g.user_id == ^user_id)
   end
 
   @doc """
