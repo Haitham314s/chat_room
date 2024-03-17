@@ -14,7 +14,6 @@ defmodule ElixirGist.Gists.Gist do
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
   def changeset(gist, attrs) do
     gist
     |> cast(attrs, [:name, :description, :markup_text, :user_id])

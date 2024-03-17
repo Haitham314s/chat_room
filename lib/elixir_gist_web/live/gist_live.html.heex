@@ -1,6 +1,6 @@
 <div class="em-gradient flex flex-col items-center justify-center p-4">
   <div class="flex justify-between w-full mb-10 px-4">
-    <div class="flex items-center ml-10">
+    <div class="flex flex-[0.75] items-center ml-10">
       <img
         src="/images/user-image.svg"
         alt="profile-image"
@@ -14,7 +14,7 @@
 
         <div class="text-lg text-white font-bold"><%= @gist.relative_time %></div>
 
-        <p class="text-left text-white font-brand"><%= @gist.description %></p>
+        <p class="text-left text-white font-brand line-clamp-3"><%= @gist.description %></p>
       </div>
     </div>
 
@@ -84,7 +84,8 @@
           phx-hook="Highlight"
           data-name={@gist.name}
         >
-          <pre><code class="language-elixir"><%= @gist.markup_text %></code></pre>
+          <pre><code class="language-elixir">
+          <%= @gist.markup_text %></code></pre>
         </div>
       </div>
     </div>

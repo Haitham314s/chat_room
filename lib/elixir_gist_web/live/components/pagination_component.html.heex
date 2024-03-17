@@ -1,0 +1,30 @@
+<div class="flex items-center justify-center gap-2 mt-4">
+  <button
+    type="button"
+    class="font-brand text-base text-emLavender-dark disabled:text-gray-500"
+    disabled={@page == 0}
+    phx-click="previous"
+  >
+    Previous
+  </button>
+
+  <%= for current_page <- @pages do %>
+    <button
+      type="button"
+      class="p-2 text-white text-sm bg-emLavender-dark rounded-lg"
+      phx-click="page"
+      phx-value-page={current_page}
+    >
+      <%= current_page + 1 %>
+    </button>
+  <% end %>
+
+  <button
+    type="button"
+    class="font-brand text-base text-emLavender-dark disabled:text-gray-500"
+    disabled={@page == @total_pages}
+    phx-click="next"
+  >
+    Next
+  </button>
+</div>

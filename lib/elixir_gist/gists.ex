@@ -19,7 +19,17 @@ defmodule ElixirGist.Gists do
 
   """
   def list_gists do
-    Repo.all(Gist)
+    query =
+      from g in Gist,
+        order_by: :updated_at,
+        limit: 100,
+        preload: [:user]
+
+    Repo.all(query)
+  end
+
+  def list_gists_count do
+    Repo.one(from p in Gist, select: count("*"))
   end
 
   @doc """
