@@ -11,7 +11,7 @@
   <%= for current_page <- @pages do %>
     <button
       type="button"
-      class="p-2 text-white text-sm bg-emLavender-dark rounded-lg"
+      class={"p-2 text-white text-sm rounded-lg #{if current_page == @page, do: "bg-emLavender-dark", else: "bg-emLavender"}"}
       phx-click="page"
       phx-value-page={current_page}
     >
@@ -22,7 +22,7 @@
   <button
     type="button"
     class="font-brand text-base text-emLavender-dark disabled:text-gray-500"
-    disabled={@page == @total_pages}
+    disabled={@page >= @total_pages}
     phx-click="next"
   >
     Next

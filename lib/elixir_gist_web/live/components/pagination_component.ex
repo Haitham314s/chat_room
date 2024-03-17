@@ -1,7 +1,7 @@
 defmodule ElixirGistWeb.PaginationComponent do
   use ElixirGistWeb, :live_component
 
-  @page_set 11
+  @page_set 5
 
   def update(assigns, socket) do
     socket = assign(socket, assigns)
