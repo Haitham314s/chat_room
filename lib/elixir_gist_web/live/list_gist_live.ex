@@ -22,7 +22,10 @@ defmodule ElixirGistWeb.ListGistLive do
         do: Gists.list_gists(page, limit, user_id),
         else: Gists.list_gists(page, limit)
 
-    total = Gists.list_gists_count()
+    total =
+      if is_not_empty?(user_id),
+        do: Gists.list_gists_count(user_id),
+        else: Gists.list_gists_count()
 
     socket =
       assign(socket,
@@ -30,22 +33,29 @@ defmodule ElixirGistWeb.ListGistLive do
         gists: gists,
         total: total,
         page: page,
-        limit: limit
+        limit: limit,
+        user_id: user_id
       )
 
     {:ok, socket, temporary_assigns: [gists: []]}
   end
 
-  def handle_params(%{"page" => page, "limit" => limit, "user_id" => user_id}, _uri, socket) do
+  def handle_params(%{"page" => page, "limit" => limit, "user_id" => user_id}, _, socket) do
     page = String.to_integer(page)
     limit = String.to_integer(limit)
+    user_id = if is_not_empty?(user_id), do: user_id, else: nil
 
     gists =
-      if is_not_empty?(user_id),
+      if not is_nil(user_id),
         do: Gists.list_gists(page, limit, user_id),
         else: Gists.list_gists(page, limit)
 
-    socket = assign(socket, page: page, limit: limit, gists: gists)
+    total =
+      if is_not_empty?(user_id),
+        do: Gists.list_gists_count(user_id),
+        else: Gists.list_gists_count()
+
+    socket = assign(socket, page: page, limit: limit, gists: gists, total: total)
     {:noreply, socket}
   end
 

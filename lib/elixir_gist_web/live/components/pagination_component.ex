@@ -12,7 +12,7 @@ defmodule ElixirGistWeb.PaginationComponent do
   end
 
   defp get_filtered_pages(total_pages, page) do
-    IO.inspect("total_pages: #{total_pages}, page: #{page}", label: "Pagination")
+    # IO.inspect("total_pages: #{total_pages}, page: #{page}", label: "Pagination")
     half_page = div(@page_set, 2)
 
     start_page =
